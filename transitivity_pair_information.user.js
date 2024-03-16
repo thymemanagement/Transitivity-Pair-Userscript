@@ -21,7 +21,7 @@
 //
 // ==/UserScript==
 
-const transCreateInfoSection = function (word) {
+function transCreateInfoSection(word) {
     const transData = TRANS_PAIRS[word]
     const p = document.createElement('p')
     if (transData === undefined) {
