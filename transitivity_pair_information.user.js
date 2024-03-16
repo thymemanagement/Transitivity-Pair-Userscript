@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        WaniKani Transitivity Pair Information
-// @version     1.0
+// @version     1.1
 // @author      thymemanagement
 // @description Provides details on existing transitivity pairs within WaniKani
 // @license     GPL version 3 or any later version; http://www.gnu.org/copyleft/gpl.html
@@ -75,6 +75,4 @@ function transCreateInfoSection(word) {
     return p
 }
 
-if (wkItemInfo.currentState.partOfSpeech.some(s => s.includes("Verb"))) {
-    wkItemInfo.forType('vocabulary').under('meaning').appendSubsection('Transitivity Pair', o => transCreateInfoSection(o.characters))
-}
+wkItemInfo.forType('vocabulary').under('meaning').appendSubsection('Transitivity Pair', o => { if (o.partOfSpeech.some(s => s.includes("Verb"))) { return transCreateInfoSection(o.characters) } else { return null }})
