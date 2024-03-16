@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        WaniKani Transitivity Pair Information
-// @version     0.200
+// @version     0.3
 // @author      thymemanagement
 // @description Provides details on existing transitivity pairs within WaniKani
 // @license     GPL version 3 or any later version; http://www.gnu.org/copyleft/gpl.html
@@ -41,7 +41,7 @@ function transCreateInfoSection(word) {
                 p2 = "This transitivity pair follows an う vs える pattern. Since it's base is く, either pair could be transitive or intransitive. In this case " + word + " is the " + transData.transitivity + " pair."
             } else if (transData.base === "る") {
                 if (word === "入る" || transData.pair === "入る") {
-                    p2 = "This transitivity pair follows an う vs える pattern. It's base is る, however these two verbs are an exception. 入る is intransitive and 入れる is transitive."
+                    p2 = "This transitivity pair follows an う vs える pattern. It's base is る, however this pair is an exception. 入る is intransitive and 入れる is transitive."
                 } else {
                     p2 = "This transitivity pair follows an う vs える pattern. Since it's base is る, the verb ending in る is transitive and the verb ending in れる is intransitive."
                 }
@@ -70,4 +70,6 @@ function transCreateInfoSection(word) {
     return p
 }
 
-wkItemInfo.forType('vocabulary').under('meaning').appendSubsection('Transitivity Pair', o => transCreateInfoSection(o.characters))
+if (wkItemInfo.currentState.partOfSpeech.some(s => s.includes("Verb"))) {
+    wkItemInfo.forType('vocabulary').under('meaning').appendSubsection('Transitivity Pair', o => transCreateInfoSection(o.characters))
+}
