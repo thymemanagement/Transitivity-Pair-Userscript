@@ -9,7 +9,8 @@
 // @match       https://www.wanikani.com/*
 // @match       https://preview.wanikani.com/*
 //
-// @require     https://greasyfork.org/scripts/430565-wanikani-item-info-injector/code/WaniKani%20Item%20Info%20Injector.user.js?version=1326536    
+// @require     https://greasyfork.org/scripts/430565-wanikani-item-info-injector/code/WaniKani%20Item%20Info%20Injector.user.js?version=1326536
+// @require     https://raw.githubusercontent.com/thymemanagement/Transitivity-Pair-Userscript/main/transitivity_pairs.json 
 //
 // @run-at      document-end
 //
